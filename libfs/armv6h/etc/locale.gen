@@ -16,7 +16,7 @@
 #  de_DE@euro ISO-8859-15
 #
 #  The locale-gen command will generate all the locales,
-#  placing them in /usr/lib/locale.
+#  placing them in /data/data/com.termux/usr/lib/locale.
 #
 #  A list of supported locales is included in this file.
 #  Uncomment the ones you need.
