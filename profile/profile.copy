@@ -49,16 +49,16 @@ unset TERMCAP
 # Man is much better than us at figuring this out
 unset MANPATH
 
-#Running and configuring termux-chroot.
+# Running and configuring termux-chroot.
 if [ -z "$TERMUX_CHROOT" ]; then
   export TERMUX_CHROOT=1
   exec termux-chroot
 fi
 unset LD_PRELOAD
 
-#Setting a variable to point to libraries.
+# Setting a variable to point to libraries.
 export LD_LIBRARY_PATH="/data/data/com.termux/files/usr/lib"
 
-#Additionally
+# Additionally
 #alias ls='ls --color=auto'
 #alias grep='grep --color=auto'
