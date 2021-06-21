@@ -1,5 +1,0 @@
-/* GNU ld script
-   Use the shared library, but some functions are only in
-   the static library, so try that secondarily.  */
-OUTPUT_FORMAT(elf32-littlearm)
-GROUP ( /data/data/com.termux/files/usr/lib/libc.so.6 /data/data/com.termux/files/usr/lib/libc_nonshared.a  AS_NEEDED ( /data/data/com.termux/files/usr/lib/ld-linux-armhf.so.3 ) )
