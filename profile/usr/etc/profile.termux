@@ -1,0 +1,32 @@
+for i in /data/data/com.termux/files/usr/etc/profile.d/*.sh; do
+	if [ -r $i ]; then
+		. $i
+	fi
+done
+unset i
+
+# Source etc/bash.bashrc and ~/.bashrc also for interactive bash login shells:
+if [ "$BASH" ]; then
+        if [[ "$-" == *"i"* ]]; then
+                if [ -r /data/data/com.termux/files/usr/etc/bash.bashrc ]; then
+                        . /data/data/com.termux/files/usr/etc/bash.bashrc
+                fi
+                if [ -r /data/data/com.termux/files/home/.bashrc ]; then
+                        . /data/data/com.termux/files/home/.bashrc
+                fi
+        fi
+fi
+
+# Running and configuring termux-chroot.
+if [ -z "$TERMUX_CHROOT" ]; then
+  export TERMUX_CHROOT=1
+  exec termux-chroot
+fi
+unset LD_PRELOAD
+
+# Setting a variable to point to libraries.
+export LD_LIBRARY_PATH="/data/data/com.termux/files/usr/lib"
+
+# Additionally
+#alias ls='ls --color=auto'
+#alias grep='grep --color=auto'
