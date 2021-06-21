@@ -1,0 +1,64 @@
+# /data/data/com.termux/files/usr/etc/profile
+
+# Set our umask
+umask 022
+
+# Append "$1" to $PATH when not already in.
+# This function API is accessible to scripts in /data/data/com.termux/files/usr/etc/profile.d
+append_path () {
+    case ":$PATH:" in
+        *:"$1":*)
+            ;;
+        *)
+            PATH="${PATH:+$PATH:}$1"
+    esac
+}
+
+# Append our default paths
+append_path '/data/data/com.termux/files/usr/local/sbin'
+append_path '/data/data/com.termux/files/usr/local/bin'
+append_path '/data/data/com.termux/files/usr/bin'
+
+# Force PATH to be environment
+export PATH
+
+# Load profiles from /data/data/com.termux/files/usr/etc/profile.d
+if test -d /data/data/com.termux/files/usr/etc/profile.d/; then
+	for profile in /data/data/com.termux/files/usr/etc/profile.d/*.sh; do
+		test -r "$profile" && . "$profile"
+	done
+	unset profile
+fi
+
+# Unload our profile API functions
+unset -f append_path
+
+# Source global bash config, when interactive but not posix or sh mode
+if test "$BASH" &&\
+   test "$PS1" &&\
+   test -z "$POSIXLY_CORRECT" &&\
+   test "${0#-}" != sh &&\
+   test -r /data/data/com.termux/files/usr/etc/bash.bashrc
+then
+	. /data/data/com.termux/files/usr/etc/bash.bashrc
+fi
+
+# Termcap is outdated, old, and crusty, kill it.
+unset TERMCAP
+
+# Man is much better than us at figuring this out
+unset MANPATH
+
+#Running and configuring termux-chroot.
+if [ -z "$TERMUX_CHROOT" ]; then
+  export TERMUX_CHROOT=1
+  exec termux-chroot
+fi
+unset LD_PRELOAD
+
+#Setting a variable to point to libraries.
+export LD_LIBRARY_PATH="/data/data/com.termux/files/usr/lib"
+
+#Additionally
+#alias ls='ls --color=auto'
+#alias grep='grep --color=auto'
