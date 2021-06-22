@@ -6,6 +6,6 @@ if [[ -z $* ]]; then
   echo 'The command making access to the conlib libraries.'
   echo 'asl [COMMAND]'
 else
-  export LD_LIBRARY_PATH="/data/data/com.termux/files/usr/lib:/data/data/com.termux/files/usr/lib/conlib"
-  $($*)
+  export LD_LIBRARY_PATH="/data/data/com.termux/files/usr/lib/conlib:/data/data/com.termux/files/usr/lib"
+  $*
 fi
