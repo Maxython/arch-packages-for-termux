@@ -1,4 +1,4 @@
-#! /usr/bin/bash
+#! /data/data/com.termux/files/usr/bin/bash
 # Copyright (C) 2011-2020 Free Software Foundation, Inc.
 # This file is part of the GNU C Library.
 
@@ -18,7 +18,7 @@
 
 # We should be able to find the translation right at the beginning.
 TEXTDOMAIN=libc
-TEXTDOMAINDIR=/usr/share/locale
+TEXTDOMAINDIR=/data/data/com.termux/files/usr/share/locale
 
 unset SOTRUSS_FROMLIST
 unset SOTRUSS_TOLIST
@@ -26,7 +26,7 @@ unset SOTRUSS_OUTNAME
 unset SOTRUSS_EXIT
 unset SOTRUSS_NOINDENT
 SOTRUSS_WHICH=$$
-lib='/usr/$LIB/audit/sotruss-lib.so'
+lib='/data/data/com.termux/files/usr/$LIB/audit/sotruss-lib.so'
 
 do_help() {
   echo $"Usage: sotruss [OPTION...] [--] EXECUTABLE [EXECUTABLE-OPTION...]

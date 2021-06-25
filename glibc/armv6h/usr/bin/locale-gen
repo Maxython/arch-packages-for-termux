@@ -1,9 +1,9 @@
-#!/bin/sh
+#!/data/data/com.termux/files/usr/bin/sh
 
 set -e
 
-LOCALEGEN=/etc/locale.gen
-LOCALES=/usr/share/i18n/locales
+LOCALEGEN=/data/data/com.termux/files/usr/etc/locale.gen
+LOCALES=/data/data/com.termux/files/usr/share/i18n/locales
 if [ -n "$POSIXLY_CORRECT" ]; then
   unset POSIXLY_CORRECT
 fi
@@ -13,7 +13,7 @@ fi
 
 # Remove all old locale dir and locale-archive before generating new
 # locale data.
-rm -rf /usr/lib/locale/* || true
+rm -rf /data/data/com.termux/files/usr/lib/locale/* || true
 
 umask 022
 
@@ -36,7 +36,7 @@ while read locale charset; do \
 	echo -n '...'; \
         if [ -f $LOCALES/$locale ]; then input=$locale; else \
         input=`echo $locale | sed 's/\([^.]*\)[^@]*\(.*\)/\1\2/'`; fi; \
-	localedef -i $input -c -f $charset -A /usr/share/locale/locale.alias $locale; \
+	localedef -i $input -c -f $charset -A /data/data/com.termux/files/usr/share/locale/locale.alias $locale; \
 	echo ' done'; \
 done < $LOCALEGEN
 echo "Generation complete."

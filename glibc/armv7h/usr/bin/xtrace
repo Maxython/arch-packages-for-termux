@@ -1,4 +1,4 @@
-#! /usr/bin/bash
+#! /data/data/com.termux/files/usr/bin/bash
 # Copyright (C) 1999-2020 Free Software Foundation, Inc.
 # This file is part of the GNU C Library.
 # Contributed by Ulrich Drepper <drepper@gnu.org>, 1999.
@@ -17,8 +17,8 @@
 # License along with the GNU C Library; if not, see
 # <https://www.gnu.org/licenses/>.
 
-pcprofileso='/usr/\$LIB/libpcprofile.so'
-pcprofiledump='/usr/bin/pcprofiledump'
+pcprofileso='/data/data/com.termux/files/usr/\$LIB/libpcprofile.so'
+pcprofiledump='/data/data/com.termux/files/usr/bin/pcprofiledump'
 TEXTDOMAIN=libc
 
 # Print usage message.
@@ -170,7 +170,7 @@ else
   mkfifo -m 0600 $fifo || exit 1
 
   # Now start the program and let it write to the FIFO.
-  $TERMINAL_PROG -T "xtrace - $program $*" -e /bin/sh -c "LD_PRELOAD=$pcprofileso PCPROFILE_OUTPUT=$fifo $program $*; read < $fifo" &
+  $TERMINAL_PROG -T "xtrace - $program $*" -e /data/data/com.termux/files/usr/bin/sh -c "LD_PRELOAD=$pcprofileso PCPROFILE_OUTPUT=$fifo $program $*; read < $fifo" &
   termpid=$!
   $pcprofiledump -u "$fifo" |
   while read line; do

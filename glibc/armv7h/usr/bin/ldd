@@ -1,4 +1,4 @@
-#! /usr/bin/bash
+#! /data/data/com.termux/files/usr/bin/bash
 # Copyright (C) 1996-2020 Free Software Foundation, Inc.
 # This file is part of the GNU C Library.
 
@@ -24,9 +24,9 @@
 
 # We should be able to find the translation right at the beginning.
 TEXTDOMAIN=libc
-TEXTDOMAINDIR=/usr/share/locale
+TEXTDOMAINDIR=/data/data/com.termux/files/usr/share/locale
 
-RTLDLIST=/usr/lib/ld-linux-armhf.so.3
+RTLDLIST=/data/data/com.termux/files/usr/lib/ld-linux-armhf.so.3
 warn=
 bind_now=
 verbose=

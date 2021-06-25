@@ -170,7 +170,7 @@ else
   mkfifo -m 0600 $fifo || exit 1
 
   # Now start the program and let it write to the FIFO.
-  $TERMINAL_PROG -T "xtrace - $program $*" -e /bin/sh -c "LD_PRELOAD=$pcprofileso PCPROFILE_OUTPUT=$fifo $program $*; read < $fifo" &
+  $TERMINAL_PROG -T "xtrace - $program $*" -e /data/data/com.termux/files/usr/bin/sh -c "LD_PRELOAD=$pcprofileso PCPROFILE_OUTPUT=$fifo $program $*; read < $fifo" &
   termpid=$!
   $pcprofiledump -u "$fifo" |
   while read line; do
