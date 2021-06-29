@@ -1,3 +1,6 @@
+# Setting a variable to point to libraries.
+export LD_LIBRARY_PATH="/data/data/com.termux/files/usr/lib"
+
 for i in /data/data/com.termux/files/usr/etc/profile.d/*.sh; do
 	if [ -r $i ]; then
 		. $i
@@ -23,9 +26,6 @@ if [ -z "$TERMUX_CHROOT" ]; then
   exec termux-chroot
 fi
 unset LD_PRELOAD
-
-# Setting a variable to point to libraries.
-export LD_LIBRARY_PATH="/data/data/com.termux/files/usr/lib"
 
 # Additionally
 #alias ls='ls --color=auto'

@@ -1,5 +1,8 @@
 # /data/data/com.termux/files/usr/etc/profile
 
+# Setting a variable to point to libraries.
+export LD_LIBRARY_PATH="/data/data/com.termux/files/usr/lib"
+
 # Set our umask
 umask 022
 
@@ -55,9 +58,6 @@ if [ -z "$TERMUX_CHROOT" ]; then
   exec termux-chroot
 fi
 unset LD_PRELOAD
-
-# Setting a variable to point to libraries.
-export LD_LIBRARY_PATH="/data/data/com.termux/files/usr/lib"
 
 # Additionally
 #alias ls='ls --color=auto'
