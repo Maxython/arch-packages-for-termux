@@ -1,0 +1,15 @@
+prefix=/usr
+exec_prefix=${prefix}
+includedir=${prefix}/include
+libdir=${exec_prefix}/lib
+host=armv5tel-unknown-linux-gnueabi
+mtcflags=
+mtlibs=-pthread
+
+Name: gpg-error
+Description: GPG Runtime
+Version: 1.42-unknown
+Cflags: 
+Libs: -lgpg-error
+Libs.private: 
+URL: https://www.gnupg.org/software/libgpg-error/index.html
