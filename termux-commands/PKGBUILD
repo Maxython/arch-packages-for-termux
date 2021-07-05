@@ -1,0 +1,19 @@
+pkgname="termux-commands"
+pkgver=2021.07.05
+pkgrel=1
+pkgdesc="Customized termux commands."
+arch=("any")
+license=('MIT')
+depends=('glibc')
+source=("https://github.com/Maxython/arch-packages-for-termux/raw/main/$pkgname/$pkgname-$pkgver-$pkgrel-$arch.tar.xz")
+
+build() {
+	tar xJf $pkgname-$pkgver-$pkgrel-$arch.tar.xz
+}
+
+package() {
+	cd $pkgname
+	cp -r * $pkgdir
+}
+
+sha256sums=('1f1dab1e3ce2468c1e63301829237a1f83921767d03d2ee7267c7515ea32b467')
