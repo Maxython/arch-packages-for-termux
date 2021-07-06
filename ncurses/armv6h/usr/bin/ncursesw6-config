@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/data/data/com.termux/files/usr/bin/asl sh
 # $Id: ncurses-config.in,v 1.43 2020/02/02 23:34:34 tom Exp $
 ##############################################################################
 # Copyright 2018-2019,2020 Thomas E. Dickey                                  #
@@ -36,7 +36,7 @@ LANGUAGE=C;	export LANGUAGE
 LC_ALL=C;	export LC_ALL
 LC_CTYPE=C;	export LC_CTYPE
 
-prefix="/usr"
+prefix="/data/data/com.termux/files/usr"
 exec_prefix="${prefix}"
 
 bindir="${exec_prefix}/bin"
@@ -44,7 +44,7 @@ includedir="${prefix}/include"
 libdir="${exec_prefix}/lib"
 datarootdir="${prefix}/share"
 datadir="${datarootdir}"
-mandir="/usr/share/man"
+mandir="/data/data/com.termux/files/usr/share/man"
 
 THIS="ncursesw"
 TINFO_LIB="ncursesw"
@@ -113,7 +113,7 @@ do
 	-L*)
 		[ -d ${opt##-L} ] || continue
 		case ${opt##-L} in
-		/usr/lib|/usr/local/lib) # skip standard libdir
+		$prefix/lib|$prefix/local/lib) # skip standard libdir
 			continue
 			;;
 		*)
@@ -134,7 +134,7 @@ do
 	lib_flags="$lib_flags $opt"
 done
 
-[ $# = 0 ] && exec /bin/sh $0 --error
+[ $# = 0 ] && exec $prefix/bin/asl sh $0 --error
 
 while [ $# -gt 0 ]; do
 	case "$1" in
@@ -241,10 +241,10 @@ ENDECHO
 		echo "${mandir}"
 		;;
 	--terminfo)
-		echo "/usr/share/terminfo"
+		echo "$prefix/share/terminfo"
 		;;
 	--terminfo-dirs)
-		echo "/usr/share/terminfo"
+		echo "$prefix/share/terminfo"
 		;;
 	--termpath)
 		echo ""
@@ -282,7 +282,7 @@ Options:
 ENDHELP
 		;;
 	--error|*)
-		/bin/sh $0 --help 1>&2
+		$prefix/bin/asl sh $0 --help 1>&2
 		exit 1
 		;;
 	esac
