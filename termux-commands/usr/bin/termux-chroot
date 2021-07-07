@@ -87,6 +87,9 @@ ARGS="$ARGS --cwd=/home"
 # Root of the file system:
 ARGS="$ARGS -r $PREFIX/.."
 
+# Makes SYSV IPC access.
+ARGS="$ARGS --sysvipc"
+
 # Shell to execute:
 PROGRAM=/bin/bash
 if [ -x $HOME/.termux/shell ]; then
