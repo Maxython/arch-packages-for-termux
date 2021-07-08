@@ -90,6 +90,9 @@ ARGS="$ARGS -r $PREFIX/.."
 # Makes SYSV IPC access.
 ARGS="$ARGS --sysvipc"
 
+# Symbolic links instead of hard links.
+ARGS="$ARGS --link2symlink"
+
 # Shell to execute:
 PROGRAM=/bin/bash
 if [ -x $HOME/.termux/shell ]; then
