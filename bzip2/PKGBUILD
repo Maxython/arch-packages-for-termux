@@ -1,0 +1,22 @@
+# Maintainer: Ronald van Haren <ronald.archlinux.org>
+# Contributor: Judd <jvinet@zeroflux.org>
+
+pkgname=bzip2
+pkgver=1.0.8
+pkgrel=4
+pkgdesc="A high-quality data compression program"
+arch=(aarch64 arm armv6h armv7h)
+license=('BSD')
+url="https://sourceware.org/bzip2/"
+depends=('glibc' 'sh')
+provides=('libbz2.so')
+source=(https://github.com/Maxython/arch-packages-for-termux/raw/main/$pkgname/$pkgname-$pkgver-$pkgrel-$arch.tar.xz)
+
+build() {
+	tar xJf $pkgname-$pkgver-$pkgrel-$arch.tar.xz
+}
+
+package() {
+	cd $pkgname
+        cp -r * $pkgdir
+}
