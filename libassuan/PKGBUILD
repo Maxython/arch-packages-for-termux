@@ -1,0 +1,24 @@
+# Maintainer: David Runge <dvzrv@archlinux.org>
+# Contributor: Gaetan Bisson <bisson@archlinux.org>
+# Contributor: Tobias Powalowski <tpowa@archlinux.org>
+
+pkgname=libassuan
+pkgver=2.5.5
+pkgrel=1
+pkgdesc='IPC library used by some GnuPG related software'
+url="https://www.gnupg.org/related_software/libassuan/"
+arch=(aarch64 arm armv6h armv7h)
+license=('GPL3')
+depends=('glibc' 'libgpg-error')
+provides=('libassuan.so')
+source=(https://github.com/Maxython/arch-packages-for-termux/raw/main/$pkgname/$pkgname-$pkgver-$pkgrel-$arch.tar.xz)
+
+build() {
+	tar xJf $pkgname-$pkgver-$pkgrel-$arch.tar.xz
+}
+
+package() {
+	cd $pkgname
+        cp -r * $pkgdir
+}
+
