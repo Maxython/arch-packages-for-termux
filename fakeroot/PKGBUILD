@@ -1,0 +1,26 @@
+# Maintainer:  Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Contributor: Allan McRae <allan@archlinux.org>
+# Contributor: Jochem Kossen <j.kossen@home.nl>
+
+pkgname=fakeroot
+pkgver=1.25.3
+pkgrel=2
+pkgdesc='Tool for simulating superuser privileges'
+arch=(aarch64 arm armv6h armv7h)
+license=('GPL')
+url='https://tracker.debian.org/pkg/fakeroot'
+groups=('base-devel')
+depends=('glibc' 'filesystem' 'sed' 'util-linux' 'sh')
+makedepends=('systemd' 'po4a')
+checkdepends=('sharutils')
+source=(https://github.com/Maxython/arch-packages-for-termux/raw/main/$pkgname/$pkgname-$pkgver-$pkgrel-$arch.tar.xz)
+
+build() {
+	tar xJf $pkgname-$pkgver-$pkgrel-$arch.tar.xz
+}
+
+package() {
+	cd $pkgname
+        cp -r * $pkgdir
+}
+
