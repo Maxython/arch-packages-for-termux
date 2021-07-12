@@ -1,0 +1,23 @@
+# Maintainer: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Maintainer: Dan McGee <dan@archlinux.org>
+
+pkgname=libarchive
+pkgver=3.5.1
+pkgrel=1
+pkgdesc='Multi-format archive and compression library'
+arch=(aarch64 arm armv6h armv7h)
+url='https://libarchive.org/'
+license=('BSD')
+depends=('acl' 'libacl.so' 'bzip2' 'expat' 'lz4' 'openssl' 'xz' 'zlib' 'zstd')
+provides=('libarchive.so')
+source=(https://github.com/Maxython/arch-packages-for-termux/raw/main/$pkgname/$pkgname-$pkgver-$pkgrel-$arch.tar.xz)
+
+build() {
+	tar xJf $pkgname-$pkgver-$pkgrel-$arch.tar.xz
+}
+
+package() {
+	cd $pkgname
+        cp -r * $pkgdir
+}
+
