@@ -1,0 +1,26 @@
+# Maintainer: Dave Reisner <dreisner@archlinux.org>
+# Contributor: Angel Velasquez <angvp@archlinux.org>
+# Contributor: Eric Belanger <eric@archlinux.org>
+# Contributor: Lucien Immink <l.immink@student.fnt.hvu.nl>
+# Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
+
+pkgname=curl
+pkgver=7.77.0
+pkgrel=1
+pkgdesc="An URL retrieval utility and library"
+arch=(aarch64 arm armv6h armv7h)
+url="https://curl.haxx.se"
+license=('MIT')
+depends=('ca-certificates' 'krb5' 'libssh2' 'libssh2.so' 'openssl' 'zlib'
+         'libpsl' 'libpsl.so' 'libnghttp2' 'libidn2' 'libidn2.so' 'zstd')
+provides=('libcurl.so')
+source=(https://github.com/Maxython/arch-packages-for-termux/raw/main/$pkgname/$pkgname-$pkgver-$pkgrel-$arch.tar.xz)
+
+build() {
+	tar xJf $pkgname-$pkgver-$pkgrel-$arch.tar.xz
+}
+
+package() {
+	cd $pkgname
+        cp -r * $pkgdir
+}
