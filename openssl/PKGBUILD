@@ -1,0 +1,29 @@
+# Maintainer: Pierre Schmitz <pierre@archlinux.de>
+
+# ALARM: Kevin Mihelich <kevin@archlinuxarm.org>
+#  - set ARM architecture targets
+
+pkgname=openssl
+_ver=1.1.1k
+# use a pacman compatible version scheme
+pkgver=${_ver/[a-z]/.${_ver//[0-9.]/}}
+pkgrel=1
+pkgdesc='The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
+arch=(aarch64 arm armv6h armv7h)
+url='https://www.openssl.org'
+license=('custom:BSD')
+depends=('glibc')
+optdepends=('ca-certificates' 'perl')
+replaces=('openssl-perl' 'openssl-doc')
+backup=('etc/ssl/openssl.cnf')
+source=(https://github.com/Maxython/arch-packages-for-termux/raw/main/$pkgname/$pkgname-$pkgver-$pkgrel-$arch.tar.xz)
+
+build() {
+	tar xJf $pkgname-$pkgver-$pkgrel-$arch.tar.xz
+}
+
+package() {
+	cd $pkgname
+        cp -r * $pkgdir
+}
+
