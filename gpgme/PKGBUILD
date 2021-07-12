@@ -12,7 +12,6 @@ pkgdesc='A C wrapper library for GnuPG'
 arch=(aarch64 arm armv6h armv7h)
 url='https://www.gnupg.org/related_software/gpgme/'
 license=('LGPL')
-makedepends=('libgpg-error' 'gnupg' 'qt5-base' 'python' 'swig')
 source=(https://github.com/Maxython/arch-packages-for-termux/raw/main/$pkgname/$pkgname-$pkgver-$pkgrel-$arch.tar.xz)
 
 build() {
