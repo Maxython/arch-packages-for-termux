@@ -1,0 +1,30 @@
+# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Maintainer: Giancarlo Razzolini <grazzolini@archlinux.org>
+# Contributor:  Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Contributor: Allan McRae <allan@archlinux.org>
+# Contributor: Aaron Griffin <aaron@archlinux.org>
+
+noautobuild=1
+
+pkgname=bash
+_basever=5.1
+_patchlevel=008
+pkgver=${_basever}.${_patchlevel}
+pkgrel=1
+arch=(aarch64 arm armv6h armv7h)
+license=(GPL)
+url='https://www.gnu.org/software/bash/bash.html'
+depends=(readline libreadline.so glibc ncurses)
+optdepends=('bash-completion: for tab completion')
+provides=('sh')
+source=(https://github.com/Maxython/arch-packages-for-termux/raw/main/$pkgname/$pkgname-$pkgver-$pkgrel-$arch.tar.xz)
+
+build() {
+	tar xJf $pkgname-$pkgver-$pkgrel-$arch.tar.xz
+}
+
+package() {
+	cd $pkgname
+        cp -r * $pkgdir
+}
+sha256sums=('9d10cc04d7b2a64e4cea0bc593f8fbc80bc6567dbe29c64734cd375cd65e289c')
