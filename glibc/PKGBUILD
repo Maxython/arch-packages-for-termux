@@ -1,0 +1,38 @@
+# Maintainer:  Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Contributor: Allan McRae <allan@archlinux.org>
+
+# toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
+# NOTE: valgrind requires rebuilt with each major glibc version
+
+noautobuild=1
+
+pkgname=glibc
+pkgver=2.32
+pkgrel=2
+arch=(aarch64 arm armv6h armv7h)
+url='https://www.gnu.org/software/libc'
+license=(GPL LGPL)
+optdepends=('perl: for mtrace')
+options=(!strip staticlibs !distcc)
+source=(https://github.com/Maxython/arch-packages-for-termux/raw/main/$pkgname/$pkgname-$pkgver-$pkgrel-$arch.tar.xz
+	sdt.h sdt-config.h
+)
+
+build() {
+	tar xJf $pkgname-$pkgver-$pkgrel-$arch.tar.xz
+}
+
+package() {
+	pkgdesc='GNU C Library'
+	depends=('linux-api-headers>=4.10' tzdata filesystem)
+	optdepends=('gd: for memusagestat')
+	install=glibc.install
+
+	cd $pkgname
+        cp -r * $pkgdir
+
+	# Provide tracing probes to libstdc++ for exceptions, possibly for other
+	# libraries too. Useful for gdb's catch command.
+	install -Dm644 "$srcdir/sdt.h" "$pkgdir/usr/include/sys/sdt.h"
+	install -Dm644 "$srcdir/sdt-config.h" "$pkgdir/usr/include/sys/sdt-config.h"
+}
