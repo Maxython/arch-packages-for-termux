@@ -1,0 +1,24 @@
+# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Maintainer: Jan de Groot <jgc@archlinux.org>
+# Contributor: Tom Gundersen <teg@jklm.no>
+# Contributor: John Proctor <jproctor@prium.net>
+
+pkgname=libxml2
+pkgver=2.9.10
+pkgrel=9
+pkgdesc='XML parsing library, version 2'
+url='http://www.xmlsoft.org/'
+arch=(aarch64 arm armv6h armv7h)
+license=(MIT)
+depends=(zlib readline ncurses xz icu)
+source=(https://github.com/Maxython/arch-packages-for-termux/raw/main/$pkgname/$pkgname-$pkgver-$pkgrel-$arch.tar.xz)
+
+build() {
+	tar xJf $pkgname-$pkgver-$pkgrel-$arch.tar.xz
+}
+
+package() {
+	cd $pkgname
+        cp -r * $pkgdir
+}
+
