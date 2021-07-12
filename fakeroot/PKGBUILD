@@ -11,7 +11,6 @@ license=('GPL')
 url='https://tracker.debian.org/pkg/fakeroot'
 groups=('base-devel')
 depends=('glibc' 'filesystem' 'sed' 'util-linux' 'sh')
-makedepends=('systemd' 'po4a')
 checkdepends=('sharutils')
 source=(https://github.com/Maxython/arch-packages-for-termux/raw/main/$pkgname/$pkgname-$pkgver-$pkgrel-$arch.tar.xz)
 
