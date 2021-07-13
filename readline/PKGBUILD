@@ -1,0 +1,32 @@
+# Maintainer: Giancarlo Razzolini <grazzolini@archlinux.org>
+# Contributor:  Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Contributor: Allan McRae <allan@archlinux.org>
+# Contributor: judd <jvinet@zeroflux.org>
+
+# ALARM: Kevin Mihelich <kevin@archlinuxarm.org>
+
+pkgname=readline
+_basever=8.1
+_patchlevel=001
+pkgver=${_basever}.${_patchlevel}
+pkgrel=1
+pkgdesc='GNU readline library'
+arch=(aarch64 arm armv6h armv7h)
+url='https://tiswww.case.edu/php/chet/readline/rltop.html'
+license=('GPL')
+backup=('etc/inputrc')
+depends=('glibc' 'ncurses' 'libncursesw.so')
+provides=('libhistory.so' 'libreadline.so')
+options=('!emptydirs')
+source=(https://github.com/Maxython/arch-packages-for-termux/raw/main/$pkgname/$pkgname-$pkgver-$pkgrel-$arch.tar.xz)
+
+build() {
+	tar xJf $pkgname-$pkgver-$pkgrel-$arch.tar.xz
+}
+
+package() {
+	cd $pkgname
+        cp -r * $pkgdir
+}
+
+sha256sums=('65b07b61c635f849098bc623810523d50169c898acf96fb81efdf5056f771475')
