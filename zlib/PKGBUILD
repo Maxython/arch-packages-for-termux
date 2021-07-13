@@ -1,0 +1,22 @@
+# Maintainer: Pierre Schmitz <pierre@archlinux.de>
+
+pkgname=zlib
+epoch=1
+pkgver=1.2.11
+pkgrel=4
+arch=(aarch64 arm armv6h armv7h)
+license=('custom')
+url="https://www.zlib.net/"
+depends=('glibc')
+options=('staticlibs')  # needed by binutils testsuite
+source=(https://github.com/Maxython/arch-packages-for-termux/raw/main/$pkgname/$pkgname-$epoch:$pkgver-$pkgrel-$arch.tar.xz)
+
+build() {
+	mv $pkgname-$epoch:$pkgver-$pkgrel-$arch.tar.xz $pkgname.tar.xz
+	tar xJf $pkgname.tar.xz
+}
+
+package() {
+	cd $pkgname
+        cp -r * $pkgdir
+}
