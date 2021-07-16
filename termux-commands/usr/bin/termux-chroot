@@ -94,11 +94,7 @@ ARGS="$ARGS --sysvipc"
 ARGS="$ARGS --link2symlink"
 
 # Shell to execute:
-PROGRAM=/bin/bash
-if [ -x $HOME/.termux/shell ]; then
-	PROGRAM=`readlink -f $HOME/.termux/shell`
-fi
-
+PROGRAM=/data/data/com.termux/files/usr/bin/bash
 export HOME=/home
 
 # Execute shell if no command has been supplied
