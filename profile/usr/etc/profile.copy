@@ -2,6 +2,7 @@
 
 # Setting a variable to point to libraries.
 export LD_LIBRARY_PATH="/data/data/com.termux/files/usr/lib"
+export LIBRARY_PATH="/data/data/com.termux/files/usr/lib"
 
 # Set our umask
 umask 022

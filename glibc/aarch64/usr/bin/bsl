@@ -10,5 +10,6 @@ if [[ -z $* ]]; then
   echo 'GNU site: https://www.gnu.org'
 else
   export LD_LIBRARY_PATH="/data/data/com.termux/files/usr/lib"
+  export LIBRARY_PATH="/data/data/com.termux/files/usr/lib"
   $*
 fi

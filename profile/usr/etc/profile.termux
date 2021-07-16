@@ -1,5 +1,6 @@
 # Setting a variable to point to libraries.
 export LD_LIBRARY_PATH="/data/data/com.termux/files/usr/lib"
+export LIBRARY_PATH="/data/data/com.termux/files/usr/lib"
 
 for i in /data/data/com.termux/files/usr/etc/profile.d/*.sh; do
 	if [ -r $i ]; then
