@@ -67,8 +67,8 @@ This step installs the following packages:
 Installation command:
 ```bash
 # Installing an archive with these packages.
-wget https://github.com/Maxython/arch-packages-for-termux/releases/download/installation-steps-2021.07.15/SecondInstallation-aarch64.tar.xz
-tar xJf SecondInstallation-aarch64.tar.xz
+wget https://github.com/Maxython/arch-packages-for-termux/releases/download/installation-steps-2021.07.15/SecondInstallation-${arch}.tar.xz
+tar xJf SecondInstallation-${arch}.tar.xz
 cd SecondInstallation
 
 # Installing packages.
