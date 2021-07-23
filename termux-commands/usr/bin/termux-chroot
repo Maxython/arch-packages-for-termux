@@ -1,4 +1,4 @@
-#!/data/data/com.termux/files/usr/bin/asl sh
+#!/data/data/com.termux/files/usr/bin/asl shArch
 
 SCRIPTNAME=termux-chroot
 show_usage () {

@@ -1,4 +1,4 @@
-#!/data/data/com.termux/files/usr/bin/asl bashArch
+#!/data/data/com.termux/files/usr/bin/bsl bash
 
 if [ "$#" != "0" ]; then
 	echo 'usage: termux-info'

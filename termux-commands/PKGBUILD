@@ -1,6 +1,6 @@
 pkgname="termux-commands"
 pkgver=2021.07.05
-pkgrel=3
+pkgrel=4
 pkgdesc="Customized termux commands."
 arch=("any")
 license=('MIT')

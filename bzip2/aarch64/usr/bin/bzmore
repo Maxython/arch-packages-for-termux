@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/data/data/com.termux/files/usr/bin/asl shArch
 
 # Bzmore wrapped for bzip2, 
 # adapted from zmore by Philippe Troin <phil@fifi.org> for Debian GNU/Linux.
