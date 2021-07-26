@@ -22,7 +22,7 @@ _arguments -C -S \
   --proxy-capath'[CA directory to verify peer against for proxy]':'<dir>':_files \
   --proxy-pinnedpubkey'[FILE/HASHES public key to verify proxy with]':'<hashes>' \
   --crlfile'[Get a CRL list in PEM format from the given file]':'<file>':_files \
-  --doh-cert-status'[Verify the status of the DOH server cert via OCSP-staple]' \
+  --doh-cert-status'[Verify the status of the DoH server cert via OCSP-staple]' \
   --etag-compare'[Pass an ETag from a file as a custom header]':'<file>':_files \
   --curves'[(EC) TLS key exchange algorithm(s) to request]':'<algorithm list>' \
   --proxy-negotiate'[Use HTTP Negotiate (SPNEGO) authentication on the proxy]' \
@@ -47,6 +47,7 @@ _arguments -C -S \
   --parallel-immediate'[Do not wait for multiplexing (with --parallel)]' \
   --cert-status'[Verify the status of the server cert via OCSP-staple]' \
   --proxy-cert-type'[Client certificate type for HTTPS proxy]':'<type>' \
+  {-Q,--quote}'[Send command(s) to server before transfer]':'<command>' \
   {-O,--remote-name}'[Write output to a file named as the remote file]' \
   --retry-connrefused'[Retry on connection refused (use with --retry)]' \
   --sasl-authzid'[Identity for SASL PLAIN authentication]':'<identity>' \
@@ -57,6 +58,7 @@ _arguments -C -S \
   {-g,--globoff}'[Disable URL sequences and ranges using {} and \[\]]' \
   {-j,--junk-session-cookies}'[Ignore session cookies read from file]' \
   {-m,--max-time}'[Maximum time allowed for the transfer]':'<seconds>' \
+  --parallel-max'[Maximum concurrency for parallel transfers]':'<num>' \
   --tls13-ciphers'[TLS 1.3 cipher suites to use]':'<ciphersuite list>' \
   --dns-ipv4-addr'[IPv4 address to use for DNS requests]':'<address>' \
   --dns-ipv6-addr'[IPv6 address to use for DNS requests]':'<address>' \
@@ -82,6 +84,7 @@ _arguments -C -S \
   {-w,--write-out}'[Use output FORMAT after completion]':'<format>' \
   {-b,--cookie}'[Send cookies from string/file]':'<data|filename>' \
   {-o,--output}'[Write to file instead of stdout]':'<file>':_files \
+  --request-target'[Specify the target for this request]':'<path>' \
   --socks4a'[SOCKS4a proxy on given host + port]':'<host[\:port]>' \
   --ssl-auto-client-cert'[Use auto client certificate (Schannel)]' \
   {-U,--proxy-user}'[Proxy user and password]':'<user\:password>' \
@@ -104,7 +107,6 @@ _arguments -C -S \
   {-J,--remote-header-name}'[Use the header-provided filename]' \
   --retry-max-time'[Retry only within this period]':'<seconds>' \
   {-:,--next}'[Make next URL use its separate set of options]' \
-  --parallel-max'[Maximum concurrency for parallel transfers]' \
   --proxy-key-type'[Private key file type for proxy]':'<type>' \
   {-X,--request}'[Specify request command to use]':'<command>' \
   --retry'[Retry request if transient problems occur]':'<num>' \
@@ -131,7 +133,6 @@ _arguments -C -S \
   --no-keepalive'[Disable TCP keepalive on the connection]' \
   --output-dir'[Directory to save files in]':'<dir>':_files \
   {-#,--progress-bar}'[Display transfer progress as a bar]' \
-  {-Q,--quote}'[Send command(s) to server before transfer]' \
   --retry-all-errors'[Retry all errors (use with --retry)]' \
   --socks5-gssapi'[Enable GSS-API auth for SOCKS5 proxies]' \
   {-K,--config}'[Read config from a file]':'<file>':_files \
@@ -146,13 +147,12 @@ _arguments -C -S \
   --tls-max'[Set maximum allowed TLS version]':'<VERSION>' \
   --data-urlencode'[HTTP POST data url encoded]':'<data>' \
   --delegation'[GSS-API delegation permission]':'<LEVEL>' \
-  --doh-insecure'[Allow insecure DOH server connections]' \
+  --doh-insecure'[Allow insecure DoH server connections]' \
   {-P,--ftp-port}'[Use PORT instead of PASV]':'<address>' \
   --post301'[Do not switch to GET after following a 301]' \
   --post302'[Do not switch to GET after following a 302]' \
   --post303'[Do not switch to GET after following a 303]' \
   --proxy-anyauth'[Pick any proxy authentication method]' \
-  --request-target'[Specify the target for this request]' \
   --trace-time'[Add time stamps to trace/verbose output]' \
   --cert-type'[Certificate type (DER/PEM/ENG)]':'<type>' \
   --disallow-username-in-url'[Disallow username in url]' \
@@ -188,7 +188,7 @@ _arguments -C -S \
   --proto'[Enable/disable PROTOCOLS]':'<protocols>' \
   --tftp-no-options'[Do not send any TFTP options]' \
   --tlsauthtype'[TLS authentication type]':'<type>' \
-  --doh-url'[Resolve host names over DOH]':'<URL>' \
+  --doh-url'[Resolve host names over DoH]':'<URL>' \
   --no-sessionid'[Disable SSL session-ID reusing]' \
   {-Z,--parallel}'[Perform transfers in parallel]' \
   --data-binary'[HTTP POST binary data]':'<data>' \
@@ -219,6 +219,7 @@ _arguments -C -S \
   --no-npn'[Disable the NPN TLS extension]' \
   --basic'[Use HTTP Basic Authentication]' \
   {-M,--manual}'[Display the full manual]' \
+  --tlspassword'[TLS password]':'<string>' \
   --false-start'[Enable TLS False Start]' \
   --crlf'[Convert LF to CRLF in upload]' \
   {-d,--data}'[HTTP POST data]':'<data>' \
@@ -242,7 +243,6 @@ _arguments -C -S \
   --url'[URL to work with]':'<url>' \
   {-0,--http1.0}'[Use HTTP 1.0]' \
   --ssl-reqd'[Require SSL/TLS]' \
-  --tlspassword'[TLS password]' \
   {-s,--silent}'[Silent mode]' \
   --http1.1'[Use HTTP 1.1]' \
   {-2,--sslv2}'[Use SSLv2]' \
