@@ -1,4 +1,4 @@
-#!/data/data/com.termux/files/usr/bin/asl shArch
+#!/data/data/com.termux/files/usr/bin/asl sh
 # Copyright (C) 1998-2020 Free Software Foundation, Inc.
 # This file is part of the GNU C Library.
 # Contributed by Ulrich Drepper <drepper@cygnus.com>, 1998.

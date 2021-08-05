@@ -19,5 +19,6 @@ else
   fi
   export LD_LIBRARY_PATH="/data/data/com.termux/files/usr/lib/conlib:/data/data/com.termux/files/usr/lib"
   export LIBRARY_PATH="/data/data/com.termux/files/usr/lib/conlib:/data/data/com.termux/files/usr/lib"
+  export SHELL="/data/data/com.termux/files/usr/bin/bashArch"
   $*
 fi

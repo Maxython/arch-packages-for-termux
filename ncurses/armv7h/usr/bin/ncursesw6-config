@@ -1,4 +1,4 @@
-#!/data/data/com.termux/files/bin/asl shArch
+#!/data/data/com.termux/files/bin/asl sh
 # $Id: ncurses-config.in,v 1.43 2020/02/02 23:34:34 tom Exp $
 ##############################################################################
 # Copyright 2018-2019,2020 Thomas E. Dickey                                  #

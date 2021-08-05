@@ -1,6 +1,6 @@
 pkgname="profile"
-pkgver=1.0
-pkgrel=3
+pkgver=1.1
+pkgrel=1
 pkgdesc="Profile."
 arch=("any")
 license=('MIT')

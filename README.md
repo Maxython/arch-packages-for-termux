@@ -52,7 +52,6 @@ rm /bin/login
 This step installs the following packages:
 * bzip2
 * curl
-* fakeroot
 * gpgme
 * libarchive
 * libassuan

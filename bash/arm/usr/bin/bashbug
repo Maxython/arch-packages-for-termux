@@ -1,4 +1,4 @@
-#!/data/data/com.termux/files/usr/bin/asl shArch -
+#!/data/data/com.termux/files/usr/bin/asl sh -
 #
 # bashbug - create a bug report and mail it to the bug address
 #

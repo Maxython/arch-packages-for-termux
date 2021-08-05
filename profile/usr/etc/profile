@@ -1,8 +1,12 @@
 # /data/data/com.termux/files/usr/etc/profile
 
 # Setting a variable to point to libraries.
-export LD_LIBRARY_PATH="/data/data/com.termux/files/usr/lib"
-export LIBRARY_PATH="/data/data/com.termux/files/usr/lib"
+if [[ -z $LD_LIBRARY_PATH ]]; then
+  export LD_LIBRARY_PATH="/data/data/com.termux/files/usr/lib"
+fi
+if [[ -z $LIBRARY_PATH ]]; then
+  export LIBRARY_PATH="/data/data/com.termux/files/usr/lib"
+fi
 
 # Set our umask
 umask 022
@@ -31,6 +35,13 @@ append_path '/data/data/com.termux/files/usr/bin'
 # Force PATH to be environment
 export PATH
 
+# Running and configuring termux-chroot.
+unset LD_PRELOAD
+if [ -z "$TERMUX_CHROOT" ]; then
+  export TERMUX_CHROOT=1
+  exec termux-chroot
+fi
+
 # Load profiles from /data/data/com.termux/files/usr/etc/profile.d
 if test -d /data/data/com.termux/files/usr/etc/profile.d/; then
 	for profile in /data/data/com.termux/files/usr/etc/profile.d/*.sh; do
@@ -57,13 +68,6 @@ unset TERMCAP
 
 # Man is much better than us at figuring this out
 unset MANPATH
-
-# Running and configuring termux-chroot.
-if [ -z "$TERMUX_CHROOT" ]; then
-  export TERMUX_CHROOT=1
-  exec termux-chroot
-fi
-unset LD_PRELOAD
 
 # Additionally
 #alias ls='ls --color=auto'

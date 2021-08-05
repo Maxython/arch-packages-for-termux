@@ -1,4 +1,4 @@
-#!/data/data/com.termux/files/usr/bin/asl shArch
+#!/data/data/com.termux/files/usr/bin/asl sh
 
 SCRIPTNAME=termux-chroot
 show_usage () {
@@ -72,7 +72,7 @@ fi
 ARGS="$ARGS -b $PREFIX:/usr"
 
 # Mimic traditional Linux file system hierarchy - other Termux dirs:
-for f in bin etc lib share tmp var; do
+for f in etc share tmp var; do
 	ARGS="$ARGS -b $PREFIX/$f:/$f"
 done
 

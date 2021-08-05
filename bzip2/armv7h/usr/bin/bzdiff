@@ -1,4 +1,4 @@
-#!/data/data/com.termux/files/usr/bin/asl shArch
+#!/data/data/com.termux/files/usr/bin/asl sh
 # sh is buggy on RS/6000 AIX 3.2. Replace above line with #!/bin/ksh
 
 # Bzcmp/diff wrapped for bzip2, 

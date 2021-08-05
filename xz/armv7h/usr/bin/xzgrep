@@ -1,4 +1,4 @@
-#!/data/data/com.termux/files/usr/bin/asl shArch
+#!/data/data/com.termux/files/usr/bin/asl sh
 
 # xzgrep -- a wrapper around a grep program that decompresses files as needed
 # Adapted from a version sent by Charles Levert <charles@comm.polymtl.ca>

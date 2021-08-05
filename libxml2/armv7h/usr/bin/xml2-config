@@ -1,4 +1,4 @@
-#! /data/data/com.termux/files/usr/bin/asl shArch
+#! /data/data/com.termux/files/usr/bin/asl sh
 
 prefix=/data/data/com.termux/files/usr
 exec_prefix=${prefix}

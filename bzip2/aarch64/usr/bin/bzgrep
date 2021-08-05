@@ -1,4 +1,4 @@
-#!/data/data/com.termux/files/usr/bin/asl shArch
+#!/data/data/com.termux/files/usr/bin/asl sh
 
 # Bzgrep wrapped for bzip2, 
 # adapted from zgrep by Philippe Troin <phil@fifi.org> for Debian GNU/Linux.
