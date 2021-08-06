@@ -19,7 +19,7 @@ makepkg -g >> PKGBUILD && makepkg
 ```
 
 ## Installation steps for all packages.
-To install these packages, you need to go through 3 steps.
+To install these packages, you need to go through 2 steps.
 ### First stage.
 This step installs the following packages:
 * bash
