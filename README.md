@@ -40,15 +40,6 @@ cd FirstInstallation
 pacman -U * --overwrite "*"
 ```
 ### Second stage.
-To do this, you already need to run the following command:
-```bash
-pacman -Sdd libcap libcap-ng util-linux util-linux-libs coreutils acl attr --overwrite "*"
-
-# !!! Attention !!!
-# If you do not run the following command then termux will not start because of this command.
-rm /bin/login
-```
-### Stage three.
 This step installs the following packages:
 * bzip2
 * curl
