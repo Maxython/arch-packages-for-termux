@@ -29,4 +29,3 @@ cd SecondInstallation
 # Installing packages.
 pacman -U * --overwrite "*"
 ```
-**Attention**: an error may appear at this stage, but it is already a matter of time when they disappear.
