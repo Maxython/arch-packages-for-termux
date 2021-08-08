@@ -22,9 +22,9 @@ makepkg -g >> PKGBUILD && makepkg
 Command:
 ```bash
 # Installing an archive with these packages.
-wget https://github.com/Maxython/arch-packages-for-termux/releases/download/installation-steps-2021.08.03/SecondInstallation-${arch}.tar.xz
-tar xJf SecondInstallation-${arch}.tar.xz
-cd SecondInstallation
+wget https://github.com/Maxython/arch-packages-for-termux/releases/download/packages-v2021.08.08/packages-${arch}.tar.xz
+tar xJf packages-${arch}.tar.xz
+cd packages
 
 # Installing packages.
 pacman -U * --overwrite "*"
