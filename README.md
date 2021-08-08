@@ -18,43 +18,8 @@ cd arch-packages-for-termux/${package_name}
 makepkg -g >> PKGBUILD && makepkg
 ```
 
-## Installation steps for all packages.
-To install these packages, you need to go through 2 steps.
-### First stage.
-This step installs the following packages:
-* bash
-* glibc
-* ncurses
-* profile
-* readline
-* termux-commands
-
-Installation command:
-```bash
-# Installing an archive with these packages.
-wget https://github.com/Maxython/arch-packages-for-termux/releases/download/installation-steps-2021.08.03/FirstInstallation-${arch}.tar.xz
-tar xJf FirstInstallation-${arch}.tar.xz
-cd FirstInstallation
-
-# Installing packages.
-pacman -U * --overwrite "*"
-```
-### Second stage.
-This step installs the following packages:
-* bzip2
-* curl
-* gpgme
-* libarchive
-* libassuan
-* libgpg-error
-* libnghttp2
-* libssh2
-* libxml2
-* openssl
-* xz
-* zlib
-
-Installation command:
+## Installing packages.
+Command:
 ```bash
 # Installing an archive with these packages.
 wget https://github.com/Maxython/arch-packages-for-termux/releases/download/installation-steps-2021.08.03/SecondInstallation-${arch}.tar.xz
