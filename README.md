@@ -22,7 +22,7 @@ makepkg -g >> PKGBUILD && makepkg
 Command:
 ```bash
 # Installing an archive with these packages.
-wget https://github.com/Maxython/arch-packages-for-termux/releases/download/packages-v2021.08.08/packages-${arch}.tar.xz
+wget https://github.com/Maxython/arch-packages-for-termux/releases/download/packages-v2021.08.09/packages-${arch}.tar.xz
 tar xJf packages-${arch}.tar.xz
 cd packages
 
