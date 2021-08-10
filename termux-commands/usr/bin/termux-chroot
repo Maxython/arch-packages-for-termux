@@ -1,4 +1,4 @@
-#!/data/data/com.termux/files/usr/bin/asl sh
+#!/system/bin/sh
 
 SCRIPTNAME=termux-chroot
 show_usage () {
@@ -22,6 +22,9 @@ shift $(($OPTIND-1))
 
 # Kill processes on exit to avoid hanging on exit
 ARGS="--kill-on-exit"
+
+# If proot is gentle with a root user. 
+#ARGS="$ARGS -0"
 
 # For the /system/bin/linker(64) to be found:
 ARGS="$ARGS -b /system:/system"
@@ -94,7 +97,16 @@ ARGS="$ARGS --sysvipc"
 ARGS="$ARGS --link2symlink"
 
 # Shell to execute:
-PROGRAM=/data/data/com.termux/files/usr/bin/bash
+if [ -G ~/.termux/shell ]; then
+	PROGRAM="`realpath ~/.termux/shell`"
+else
+	for file in /data/data/com.termux/files/usr/bin/bashTermux /data/data/com.termux/files/usr/bin/dash /system/bin/sh; do
+		if [ -x $file ]; then
+			PROGRAM=$file
+			break
+		fi
+	done
+fi
 export HOME=/home
 
 # Execute shell if no command has been supplied

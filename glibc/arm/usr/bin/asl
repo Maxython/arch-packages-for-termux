@@ -1,6 +1,3 @@
-#
-#!/data/data/com.termux/files/usr/bin/bash
-#
 
 if [[ ! -d /data/data/com.termux/files/usr/lib/conlib ]]; then
   echo 'error: conlib directory not found.'
@@ -19,6 +16,5 @@ else
   fi
   export LD_LIBRARY_PATH="/data/data/com.termux/files/usr/lib/conlib:/data/data/com.termux/files/usr/lib"
   export LIBRARY_PATH="/data/data/com.termux/files/usr/lib/conlib:/data/data/com.termux/files/usr/lib"
-  export SHELL="/data/data/com.termux/files/usr/bin/bashArch"
   $*
 fi
