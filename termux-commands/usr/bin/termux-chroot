@@ -23,6 +23,8 @@ shift $(($OPTIND-1))
 # Kill processes on exit to avoid hanging on exit
 ARGS="--kill-on-exit"
 
+# Set user
+ARGS="$ARGS -i $(/system/bin/id -u):$(/system/bin/id -g)"
 # If proot is gentle with a root user. 
 #ARGS="$ARGS -0"
 
