@@ -1,4 +1,4 @@
-#!/data/data/com.termux/files/usr/bin/bsl dash
+#!/system/bin/sh
 
 if [ $# != 1 ]; then
 	echo 'usage: termux-open-url <url>'

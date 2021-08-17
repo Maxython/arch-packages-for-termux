@@ -1,4 +1,4 @@
-#!/data/data/com.termux/files/usr/bin/bsl bashTermux
+#!/data/data/com.termux/files/usr/bin/bashTermux
 
 unset LD_PRELOAD LD_LIBRARY_PATH
 

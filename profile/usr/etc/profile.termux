@@ -6,13 +6,6 @@ if [[ -z $LIBRARY_PATH ]]; then
   export LIBRARY_PATH="/data/data/com.termux/files/usr/lib"
 fi
 
-# Running and configuring termux-chroot.
-unset LD_PRELOAD
-if [ -z "$TERMUX_CHROOT" ]; then
-  export TERMUX_CHROOT=1
-  exec termux-chroot
-fi
-
 for i in /data/data/com.termux/files/usr/etc/profile.d/*.sh; do
 	if [ -r $i ]; then
 		. $i
@@ -33,5 +26,5 @@ if [ "$BASH" ]; then
 fi
 
 # Additionally
-#alias ls='ls --color=auto'
-#alias grep='grep --color=auto'
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'

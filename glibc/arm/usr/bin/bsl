@@ -12,5 +12,8 @@ else
   export LD_LIBRARY_PATH="/data/data/com.termux/files/usr/lib"
   export LIBRARY_PATH="/data/data/com.termux/files/usr/lib"
   export SHELL="/data/data/com.termux/files/usr/bin/bashTermux"
-  $*
+  IFS=';' read -ra CMD <<< "$*"
+  for i in "${CMD[@]}"; do
+    $i
+  done
 fi

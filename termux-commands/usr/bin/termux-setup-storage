@@ -1,4 +1,4 @@
-#!/data/data/com.termux/files/usr/bin/bsl bashTermux
+#!/data/data/com.termux/files/usr/bin/bashTermux
 
 if [ "$#" != "0" ]; then
 	echo 'usage: termux-setup-storage'

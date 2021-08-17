@@ -35,13 +35,6 @@ append_path '/data/data/com.termux/files/usr/bin'
 # Force PATH to be environment
 export PATH
 
-# Running and configuring termux-chroot.
-unset LD_PRELOAD
-if [ -z "$TERMUX_CHROOT" ]; then
-  export TERMUX_CHROOT=1
-  exec termux-chroot
-fi
-
 # Load profiles from /data/data/com.termux/files/usr/etc/profile.d
 if test -d /data/data/com.termux/files/usr/etc/profile.d/; then
 	for profile in /data/data/com.termux/files/usr/etc/profile.d/*.sh; do
@@ -70,5 +63,5 @@ unset TERMCAP
 unset MANPATH
 
 # Additionally
-#alias ls='ls --color=auto'
-#alias grep='grep --color=auto'
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'

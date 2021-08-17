@@ -1,4 +1,4 @@
-#!/data/data/com.termux/files/usr/bin/bsl dash
+#!/system/bin/sh
 
 if [ "$#" != "0" ]; then
 	echo 'usage: termux-reload-settings'

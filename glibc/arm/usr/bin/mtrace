@@ -1,5 +1,5 @@
-#! /data/data/com.termux/files/usr/bin/asl perl
-eval "exec /data/data/com.termux/files/usr/bin/asl perl -S $0 $@"
+#! /data/data/com.termux/files/usr/bin/perl
+eval "exec /data/data/com.termux/files/usr/bin/perl -S $0 $@"
     if 0;
 # Copyright (C) 1997-2020 Free Software Foundation, Inc.
 # This file is part of the GNU C Library.

@@ -10,7 +10,7 @@ else
 fi
 
 if [ -G ~/.termux/shell ]; then
-	export SHELL="`realpath ~/.termux/shell`"
+	export SHELL="`cat ~/.termux/shell`"
 else
 	for file in /data/data/com.termux/files/usr/bin/bashTermux /data/data/com.termux/files/usr/bin/dash /system/bin/sh; do
 		if [ -x $file ]; then
@@ -27,8 +27,14 @@ fi
 
 export PATH="/data/data/com.termux/files/usr/bin"
 
-if [ -n "$TERM" ]; then
-	exec "$SHELL" -l "$@"
+unset LD_PRELOAD
+if [ -z "$TERMUX_CHROOT" ]; then
+	export TERMUX_CHROOT=1
+	exec termux-chroot
 else
-	exec "$SHELL" "$@"
+	if [ -n "$TERM" ]; then
+		exec "$SHELL" -l "$@"
+	else
+		exec "$SHELL" "$@"
+	fi
 fi
