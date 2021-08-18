@@ -102,7 +102,7 @@ ARGS="$ARGS --link2symlink"
 if [ -G ~/.termux/shell ]; then
 	PROGRAM="`cat ~/.termux/shell`"
 else
-	for file in /data/data/com.termux/files/usr/bin/bash /data/data/com.termux/files/usr/bin/sh /system/bin/sh; do
+	for file in /data/data/com.termux/files/usr/bin/bash /data/data/com.termux/files/usr/bin/bashTermux /system/bin/sh; do
 		if [ -x $file ]; then
 			PROGRAM=$file
 			break
