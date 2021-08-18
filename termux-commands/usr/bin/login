@@ -25,12 +25,13 @@ if [ -f /data/data/com.termux/files/usr/lib/libtermux-exec.so ]; then
 	$SHELL -c "coreutils --coreutils-prog=true" > /dev/null 2>&1 || unset LD_PRELOAD
 fi
 
-export PATH="/data/data/com.termux/files/usr/bin"
 if [ `getconf LONG_BIT` = "64" ]; then
 	export LD_LIBRARY_PATH="/system/lib64" LIBRARY_PATH="/system/lib64"
 else
 	export LD_LIBRARY_PATH="/system/lib" LIBRARY_PATH="/system/lib"
 fi
+
+export PATH="/data/data/com.termux/files/usr/bin"
 
 unset LD_PRELOAD
 if [ -z "$TERMUX_CHROOT" ]; then
