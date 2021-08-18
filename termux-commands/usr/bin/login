@@ -12,7 +12,7 @@ fi
 if [ -G ~/.termux/shell ]; then
 	export SHELL="`cat ~/.termux/shell`"
 else
-	for file in /data/data/com.termux/files/usr/bin/bashTermux /data/data/com.termux/files/usr/bin/dash /system/bin/sh; do
+	for file in /data/data/com.termux/files/usr/bin/bash /data/data/com.termux/files/usr/bin/sh /system/bin/sh; do
 		if [ -x $file ]; then
 			export SHELL=$file
 			break
@@ -26,6 +26,11 @@ if [ -f /data/data/com.termux/files/usr/lib/libtermux-exec.so ]; then
 fi
 
 export PATH="/data/data/com.termux/files/usr/bin"
+if [ `getconf LONG_BIT` = "64" ]; then
+	export LD_LIBRARY_PATH="/system/lib64" LIBRARY_PATH="/system/lib64"
+else
+	export LD_LIBRARY_PATH="/system/lib" LIBRARY_PATH="/system/lib"
+fi
 
 unset LD_PRELOAD
 if [ -z "$TERMUX_CHROOT" ]; then

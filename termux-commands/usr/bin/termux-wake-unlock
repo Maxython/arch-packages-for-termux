@@ -1,4 +1,5 @@
-#!/system/bin/sh
+#!/data/data/com.termux/files/usr/bin/bash
+export LD_LIBRARY_PATH="/system/lib64" LIBRARY_PATH="/system/lib64" PATH="/system/bin"
 
 if [ $# != 0 ]; then
 	echo 'usage: termux-wake-unlock'

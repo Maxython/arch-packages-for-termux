@@ -1,4 +1,4 @@
-#!/data/data/com.termux/files/usr/bin/bsl bashTermux
+#!/data/data/com.termux/files/usr/bin/bash
 
 if [ "$#" != "0" ]; then
 	echo 'usage: termux-info'
@@ -12,8 +12,8 @@ updates() {
 	if [ "$(id -u)" = "0" ]; then
 		echo "Running as root. Cannot check package updates."
 	else
-		bsl pacman -Sy >/dev/null 2>&1
-		updatable=$(bsl pacman -Qeu)
+		pacman -Sy >/dev/null 2>&1
+		updatable=$(pacman -Qeu)
 
 		if [ -z "$updatable" ];then
 			echo "All packages up to date"
@@ -27,9 +27,9 @@ repo_subscriptions() {
 	conf=/data/data/com.termux/files/usr/etc/pacman.conf
         if [[ -f $conf ]]; then
 		echo "# $conf"
-		for i in $(bsl pacman-conf -l)
+		for i in $(pacman-conf -l)
 		do
-			for j in $(bsl pacman-conf | grep $i | sed 's/Server = //g')
+			for j in $(pacman-conf | grep $i | sed 's/Server = //g')
 			do
 				echo "$j"
 			done
@@ -49,19 +49,19 @@ $TERMUX_VERSION
 fi
 
 output+="Packages CPU architecture:
-$(bsl pacman-conf | grep Architecture | sed 's/Architecture = //g')
+$(pacman-conf | grep Architecture | sed 's/Architecture = //g')
 Subscribed repositories:
 $(repo_subscriptions)
 Updatable packages:
 $(updates)
 Android version:
-$(asl getprop ro.build.version.release)
+$(getprop ro.build.version.release)
 Kernel build information:
 $(uname -a)
 Device manufacturer:
-$(asl getprop ro.product.manufacturer)
+$(getprop ro.product.manufacturer)
 Device model:
-$(asl getprop ro.product.model)"
+$(getprop ro.product.model)"
 echo "$output"
 
 if [ -n "$(command -v termux-clipboard-set)" ]; then

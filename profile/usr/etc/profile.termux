@@ -1,9 +1,9 @@
 # Setting a variable to point to libraries.
-if [[ -z $LD_LIBRARY_PATH ]]; then
-  export LD_LIBRARY_PATH="/data/data/com.termux/files/usr/lib"
+if [[ -n $LD_LIBRARY_PATH ]]; then
+  unset LD_LIBRARY_PATH
 fi
-if [[ -z $LIBRARY_PATH ]]; then
-  export LIBRARY_PATH="/data/data/com.termux/files/usr/lib"
+if [[ -n $LIBRARY_PATH ]]; then
+  unset LIBRARY_PATH
 fi
 
 for i in /data/data/com.termux/files/usr/etc/profile.d/*.sh; do

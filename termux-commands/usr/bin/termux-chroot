@@ -99,12 +99,16 @@ ARGS="$ARGS --sysvipc"
 ARGS="$ARGS --link2symlink"
 
 # Shell to execute:
-for file in /data/data/com.termux/files/usr/bin/bashTermux /data/data/com.termux/files/usr/bin/dash /system/bin/sh; do
-	if [ -x $file ]; then
-		PROGRAM=$file
-		break
-	fi
-done
+if [ -G ~/.termux/shell ]; then
+	PROGRAM="`cat ~/.termux/shell`"
+else
+	for file in /data/data/com.termux/files/usr/bin/bash /data/data/com.termux/files/usr/bin/sh /system/bin/sh; do
+		if [ -x $file ]; then
+			PROGRAM=$file
+			break
+		fi
+	done
+fi
 export HOME=/home
 
 # Execute shell if no command has been supplied
