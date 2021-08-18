@@ -1,0 +1,38 @@
+pkgname=pacman
+pkgver=6.0.0
+pkgrel=1
+pkgdesc="A library-based package manager with dependency support"
+arch=(aarch64 arm armv7h)
+url="https://www.archlinux.org/pacman/"
+license=('GPL')
+groups=('base-devel')
+makedepends=('asciidoc' 'doxygen')
+depends=('bash' 'glibc' 'libarchive' 'curl'
+         'gpgme' 'pacman-mirrorlist' 'archlinuxarm-keyring')
+checkdepends=('python' 'fakechroot' 'python-pip')
+optdepends=('perl-locale-gettext: translation support in makepkg-template')
+provides=('libalpm.so')
+source=(https://github.com/Maxython/pacman-for-termux/releases/download/pacman-arch-6.0/pacman-arch.tar.xz)
+sha256sums=('3ae3e633a2d64b4a9c0b2d91fda42b191b40fef1ceb904000146be539e3337f6')
+
+prepare() {
+	pip install meson
+}
+
+build() {
+	cd pacman-arch
+	[[ -z $PREFIX ]] && PREFIX=/data/data/com.termux/files/usr
+	meson --prefix=$PREFIX \
+        	--buildtype=plain \
+        	-Ddoc=enabled \
+        	-Ddoxygen=enabled \
+        	-Dscriptlet-shell=$PREFIX/bin/bash \
+        	-Dldconfig=$PREFIX/bin/ldconfig \
+        build
+	meson compile -C build
+}
+
+package() {
+	cd pacman-arch
+	DESTDIR="$pkgdir" meson install -C build
+}
