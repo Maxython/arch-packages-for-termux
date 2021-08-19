@@ -1,6 +1,6 @@
 pkgname=pacman
 pkgver=6.0.0
-pkgrel=1
+pkgrel=5
 pkgdesc="A library-based package manager with dependency support"
 arch=(aarch64 arm armv7h)
 url="https://www.archlinux.org/pacman/"
