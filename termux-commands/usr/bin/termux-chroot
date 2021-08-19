@@ -26,6 +26,15 @@ ARGS="--kill-on-exit"
 # Set user.
 ARGS="$ARGS -0"
 
+# Makes SYSV IPC access.
+ARGS="$ARGS --sysvipc"
+
+# Symbolic links instead of hard links.
+ARGS="$ARGS --link2symlink"
+
+# Kernel information.
+ARGS="$ARGS -k `/system/bin/uname -r`"
+
 # For the /system/bin/linker(64) to be found:
 ARGS="$ARGS -b /system:/system"
 
@@ -89,12 +98,6 @@ ARGS="$ARGS --cwd=/home"
 
 # Root of the file system:
 ARGS="$ARGS -r $PREFIX/.."
-
-# Makes SYSV IPC access.
-ARGS="$ARGS --sysvipc"
-
-# Symbolic links instead of hard links.
-ARGS="$ARGS --link2symlink"
 
 # Shell to execute:
 if [ -G ~/.termux/shell ]; then
