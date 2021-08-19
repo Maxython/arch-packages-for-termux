@@ -13,7 +13,6 @@ checkdepends=('python' 'fakechroot' 'python-pip')
 optdepends=('perl-locale-gettext: translation support in makepkg-template')
 provides=('libalpm.so')
 source=(https://github.com/Maxython/pacman-for-termux/releases/download/pacman-arch-6.0/pacman-arch.tar.xz)
-sha256sums=('3ae3e633a2d64b4a9c0b2d91fda42b191b40fef1ceb904000146be539e3337f6')
 
 prepare() {
 	pip install meson
