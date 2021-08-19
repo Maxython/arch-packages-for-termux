@@ -4,6 +4,15 @@ if [ `/system/bin/getconf LONG_BIT` = "64" ]; then
 else
         export LD_LIBRARY_PATH="/system/lib" LIBRARY_PATH="/system/lib"
 fi
-export PATH="/system/bin" CLASSPATH=/data/data/com.termux/files/usr/libexec/termux-am/am.apk
-unset LD_LIBRARY_PATH LD_PRELOAD
-exec /system/bin/app_process / com.termux.termuxam.Am "$@"
+set -e
+
+if [ -z $* ]; then
+  echo "$0 [COMMAND]"
+  echo "Executing command from android libraries."
+  exit 1
+else
+  IFS=';' read -ra CMD <<< "$*"
+  for i in "${CMD[@]}"; do
+    $i
+  done
+fi

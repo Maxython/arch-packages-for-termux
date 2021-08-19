@@ -10,15 +10,20 @@ else
 fi
 
 if [ -G ~/.termux/shell ]; then
-	export SHELL="`cat ~/.termux/shell`"
+	SHELL="`cat ~/.termux/shell`"
+	if [ -z $SHELL ]; then
+		rm ~/.termux/shell
+		SHELL=/data/data/com.termux/files/usr/bin/bash
+	fi
 else
 	for file in /data/data/com.termux/files/usr/bin/bash /data/data/com.termux/files/usr/bin/bashTermux /system/bin/sh; do
 		if [ -x $file ]; then
-			export SHELL=$file
+			SHELL=$file
 			break
 		fi
 	done
 fi
+export SHELL
 
 if [ -f /data/data/com.termux/files/usr/lib/libtermux-exec.so ]; then
 	export LD_PRELOAD=/data/data/com.termux/files/usr/lib/libtermux-exec.so
