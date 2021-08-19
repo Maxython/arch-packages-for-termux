@@ -1,4 +1,6 @@
 # arch-packages-for-termux
+#### Attention: support and updates for all packages (except pacman, profile and termux-commands) have been discontinued.
+
 This is where the arch packages are configured to run the arch command on termux.  
 
 At the moment, packages are only available on the `aarch64` architecture, except for the profile package and termux-commands.
