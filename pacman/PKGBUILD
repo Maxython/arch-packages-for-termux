@@ -25,7 +25,7 @@ build() {
         	--buildtype=plain \
         	-Ddoc=enabled \
         	-Ddoxygen=enabled \
-        	-Dscriptlet-shell=$PREFIX/bin/bash \
+        	-Dscriptlet-shell=$PREFIX/bin/sh \
         	-Dldconfig=$PREFIX/bin/ldconfig \
         build
 	meson compile -C build
