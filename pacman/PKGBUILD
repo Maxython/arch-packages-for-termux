@@ -20,14 +20,7 @@ prepare() {
 
 build() {
 	cd pacman-arch
-	[[ -z $PREFIX ]] && PREFIX=/data/data/com.termux/files/usr
-	meson --prefix=$PREFIX \
-        	--buildtype=plain \
-        	-Ddoc=enabled \
-        	-Ddoxygen=enabled \
-        	-Dscriptlet-shell=$PREFIX/bin/sh \
-        	-Dldconfig=$PREFIX/bin/ldconfig \
-        build
+	meson --prefix=/usr build
 	meson compile -C build
 }
 
