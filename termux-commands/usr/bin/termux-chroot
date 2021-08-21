@@ -20,11 +20,25 @@ do
 done
 shift $(($OPTIND-1))
 
+CONF=/data/data/com.termux/files/usr/etc/proot.conf
+if [ ! -f $CONF ]; then
+	echo "The 'CONF' file was not found, it was created."
+	echo "# Information for running termux-chroot." >> $CONF
+	echo "name=root" >> $CONF
+	echo "shell=/usr/bin/bash" >> $CONF
+fi
+source $CONF
+
+INFO="$(/system/bin/grep $NAME /data/data/com.termux/files/usr/etc/passwd)"
+SPLIT_INFO=(${INFO//:/ })
+UID=${SPLIT_INFO[2]}
+GID=${SPLIT_INFO[3]}
+
 # Kill processes on exit to avoid hanging on exit
 ARGS="--kill-on-exit"
 
 # Set user.
-ARGS="$ARGS -0"
+ARGS="$ARGS -i $UID:$GID"
 
 # Makes SYSV IPC access.
 ARGS="$ARGS --sysvipc"
@@ -100,17 +114,29 @@ ARGS="$ARGS --cwd=/home"
 ARGS="$ARGS -r $PREFIX/.."
 
 # Shell to execute:
-if [ -G ~/.termux/shell ]; then
-	PROGRAM="`/system/bin/cat ~/.termux/shell`"
+if [ -n $SHELL ]; then
+	PROGRAM=$SHELL
+	export SHELL
 else
 	for file in /data/data/com.termux/files/usr/bin/bash /data/data/com.termux/files/usr/bin/bashTermux /system/bin/sh; do
 		if [ -x $file ]; then
 			PROGRAM=$file
+			export SHELL=$file
 			break
 		fi
 	done
 fi
-export HOME=/home
+
+# The path to home.
+if [ "$NAME" = "root" ]; then
+	HOME=/root
+else
+	HOME=/home/$NAME
+	if [ ! -d $HOME ]; then
+		HOME=/home
+	fi
+fi
+export HOME
 
 # Execute shell if no command has been supplied
 if [ -z "$1" ];then
@@ -125,3 +151,5 @@ else
 	# termux-chroot "SOME_CONFIG=value ./configure"
 	exec $PREFIX/bin/proot $ARGS sh -c "$*"
 fi
+
+echo ok

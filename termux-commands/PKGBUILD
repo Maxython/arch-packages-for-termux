@@ -1,5 +1,5 @@
 pkgname="termux-commands"
-pkgver=2021.08.19
+pkgver=2021.08.21
 pkgrel=1
 pkgdesc="Customized termux commands."
 arch=("any")
@@ -7,11 +7,8 @@ license=('MIT')
 depends=('glibc')
 source=("https://github.com/Maxython/arch-packages-for-termux/raw/main/$pkgname/$pkgname-$pkgver-$pkgrel-$arch.tar.xz")
 
-build() {
-	tar xJf $pkgname-$pkgver-$pkgrel-$arch.tar.xz
-}
-
 package() {
 	cd $pkgname
 	cp -r * $pkgdir
 }
+sha256sums=('86f8cdcb014c45f854363ad57f6bd46509ae0dd4e3f56e0e1e9811675581477c')

@@ -7,10 +7,6 @@ license=('MIT')
 depends=('termux-commands')
 source=("https://github.com/Maxython/arch-packages-for-termux/raw/main/$pkgname/$pkgname-$pkgver-$pkgrel-$arch.tar.xz")
 
-build() {
-	tar xJf $pkgname-$pkgver-$pkgrel-$arch.tar.xz
-}
-
 package() {
 	cd $pkgname
 	cp -r * $pkgdir

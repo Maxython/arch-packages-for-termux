@@ -1,9 +1,4 @@
 #!/data/data/com.termux/files/usr/bin/bash
-if [ `/system/bin/getconf LONG_BIT` = "64" ]; then
-        export LD_LIBRARY_PATH="/system/lib64" LIBRARY_PATH="/system/lib64"
-else
-        export LD_LIBRARY_PATH="/system/lib" LIBRARY_PATH="/system/lib"
-fi
 export PATH="/system/bin"
 
 if [ $# != 1 ]; then
