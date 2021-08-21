@@ -63,5 +63,7 @@ unset TERMCAP
 unset MANPATH
 
 # Additionally
+cd $HOME
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
+

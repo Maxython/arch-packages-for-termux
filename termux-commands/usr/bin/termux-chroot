@@ -29,10 +29,14 @@ if [ ! -f $CONF ]; then
 fi
 source $CONF
 
-INFO="$(/system/bin/grep $NAME /data/data/com.termux/files/usr/etc/passwd)"
-SPLIT_INFO=(${INFO//:/ })
-UID=${SPLIT_INFO[2]}
-GID=${SPLIT_INFO[3]}
+if [[ -n $NAME ]]; then
+	INFO="$(/system/bin/grep $NAME /data/data/com.termux/files/usr/etc/passwd)"
+	SPLIT_INFO=(${INFO//:/ })
+	UID=${SPLIT_INFO[2]}
+	GID=${SPLIT_INFO[3]}
+fi
+[ -z $UID ] && UID="`/system/bin/id -u`"
+[ -z $GID ] && GID="`/system/bin/id -g`"
 
 # Kill processes on exit to avoid hanging on exit
 ARGS="--kill-on-exit"
@@ -132,9 +136,7 @@ if [ "$NAME" = "root" ]; then
 	HOME=/root
 else
 	HOME=/home/$NAME
-	if [ ! -d $HOME ]; then
-		HOME=/home
-	fi
+	[ ! -d $HOME ] && HOME=/home
 fi
 export HOME
 

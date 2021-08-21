@@ -11,4 +11,3 @@ package() {
 	cd $pkgname
 	cp -r * $pkgdir
 }
-sha256sums=('86f8cdcb014c45f854363ad57f6bd46509ae0dd4e3f56e0e1e9811675581477c')
