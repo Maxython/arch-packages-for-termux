@@ -1,5 +1,5 @@
 # arch-packages-for-termux
-#### Attention: support and updates for all packages (except pacman, profile and termux-commands) have been discontinued.
+#### Attention: support and updates for all packages (except pacman and termux-commands) have been discontinued.
 
 This is where the arch packages are configured to run the arch command on termux.  
 
