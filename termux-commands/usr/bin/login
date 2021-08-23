@@ -1,7 +1,5 @@
 #!/system/bin/sh
 
-export PATH="/system/bin"
-
 if [ $# = 0 ] && [ -f /data/data/com.termux/files/usr/etc/motd ] && [ ! -f ~/.hushlogin ] && [ -z "$TERMUX_HUSHLOGIN" ]; then
 	/system/bin/cat /data/data/com.termux/files/usr/etc/motd
 else
@@ -14,8 +12,6 @@ if [ `/system/bin/getconf LONG_BIT` = "64" ]; then
 else
 	export LD_LIBRARY_PATH="/system/lib" LIBRARY_PATH="/system/lib"
 fi
-
-export PATH="/data/data/com.termux/files/usr/bin"
 
 unset LD_PRELOAD
 if [ -z "$TERMUX_CHROOT" ]; then

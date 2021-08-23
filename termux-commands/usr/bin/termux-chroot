@@ -24,19 +24,23 @@ CONF=/data/data/com.termux/files/usr/etc/proot.conf
 if [ ! -f $CONF ]; then
 	echo "The 'CONF' file was not found, it was created."
 	echo "# Information for running termux-chroot." >> $CONF
-	echo "name=root" >> $CONF
-	echo "shell=/usr/bin/bash" >> $CONF
+	echo "NAME=root" >> $CONF
 fi
 source $CONF
 
-if [[ -n $NAME ]]; then
-	INFO="$(/system/bin/grep $NAME /data/data/com.termux/files/usr/etc/passwd)"
-	SPLIT_INFO=(${INFO//:/ })
-	UID=${SPLIT_INFO[2]}
-	GID=${SPLIT_INFO[3]}
+if [ "$NAME" != "root" ]; then
+	if [[ -n $NAME ]]; then
+		INFO="$(/system/bin/grep $NAME /data/data/com.termux/files/usr/etc/passwd)"
+		SPLIT_INFO=(${INFO//:/ })
+		UID=${SPLIT_INFO[2]}
+		GID=${SPLIT_INFO[3]}
+	fi
+	[ -z $UID ] && UID="`/system/bin/id -u`"
+	[ -z $GID ] && GID="`/system/bin/id -g`"
+else
+	UID="0"
+	GID="0"
 fi
-[ -z $UID ] && UID="`/system/bin/id -u`"
-[ -z $GID ] && GID="`/system/bin/id -g`"
 
 # Kill processes on exit to avoid hanging on exit
 ARGS="--kill-on-exit"
@@ -118,7 +122,7 @@ ARGS="$ARGS --cwd=/home"
 ARGS="$ARGS -r $PREFIX/.."
 
 # Shell to execute:
-if [ -n $SHELL ]; then
+if [[ -n $SHELL ]]; then
 	PROGRAM=$SHELL
 	export SHELL
 else
