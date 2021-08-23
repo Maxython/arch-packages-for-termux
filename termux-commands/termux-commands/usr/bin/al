@@ -1,0 +1,18 @@
+#!/data/data/com.termux/files/usr/bin/bash
+if [ `/system/bin/getconf LONG_BIT` = "64" ]; then
+        export LD_LIBRARY_PATH="/system/lib64" LIBRARY_PATH="/system/lib64"
+else
+        export LD_LIBRARY_PATH="/system/lib" LIBRARY_PATH="/system/lib"
+fi
+set -e
+
+if [ -z $* ]; then
+  echo "$0 [COMMAND]"
+  echo "Executing command from android libraries."
+  exit 1
+else
+  IFS=';' read -ra CMD <<< "$*"
+  for i in "${CMD[@]}"; do
+    $i
+  done
+fi

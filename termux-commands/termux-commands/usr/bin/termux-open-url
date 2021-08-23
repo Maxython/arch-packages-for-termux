@@ -1,0 +1,10 @@
+#!/data/data/com.termux/files/usr/bin/bash
+export PATH="/system/bin"
+
+if [ $# != 1 ]; then
+	echo 'usage: termux-open-url <url>'
+	echo 'Open an URL for viewing.'
+	exit 1
+fi
+
+am start --user 0 -a android.intent.action.VIEW -d $1 > /dev/null

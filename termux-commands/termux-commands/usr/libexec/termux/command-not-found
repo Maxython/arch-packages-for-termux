@@ -1,0 +1,10 @@
+if [[ -z "$1" ]]; then
+	echo "Command not written."
+	echo "command-not-found [COMMAND]"
+	exit 1
+fi
+
+SHELL_NAME=(${SHELL//// })
+
+echo "${SHELL_NAME[-1]}: command '$1' not found."
+exit 127

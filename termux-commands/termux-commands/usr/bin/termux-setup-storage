@@ -1,0 +1,24 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+if [ "$#" != "0" ]; then
+	echo 'usage: termux-setup-storage'
+	echo 'Use without arguments to ensure storage permission granted'
+	echo 'and symlinks to storage available in $HOME/storage'
+	exit
+fi
+
+if [ -d "/data/data/com.termux/files/home/storage" ]; then
+	echo
+	echo "Directory '~/storage' is going to be wiped. No storage contents will be touched."
+	echo
+	read -re -p "Do you want to continue ? (y/n) " CHOICE
+
+	if ! [[ "${CHOICE}" =~ (Y|y) ]]; then
+		echo "Leaving intact the contents of '~/storage' directory."
+		exit 1
+	fi
+fi
+
+am broadcast --user 0 \
+		 --es com.termux.app.reload_style storage \
+		 -a com.termux.app.reload_style com.termux > /dev/null

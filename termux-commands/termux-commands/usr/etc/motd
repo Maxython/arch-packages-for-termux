@@ -1,0 +1,17 @@
+
+Welcome to Arch in Termux!
+
+Termux community:  https://termux.com/community
+Termux gitter:     https://gitter.im/termux/termux
+Termux IRC:        #termux on libera.chat
+
+Working with packages:
+
+ * Search packages:             pkg search <query>
+ * Search packages by filename: pkg search-file <query>
+ * Install a package:           pkg install <package>
+ * Upgrade packages:            pkg upgrade
+
+Report issues at 
+ * https://github.com/Maxython/pacman-for-termux/issues
+
