@@ -22,3 +22,7 @@ fi
 am broadcast --user 0 \
 		 --es com.termux.app.reload_style storage \
 		 -a com.termux.app.reload_style com.termux > /dev/null
+
+[ ! -d $HOME/storage ] && ln -s /data/data/com.termux/files/home/storage $HOME/storage
+
+exit 0

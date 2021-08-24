@@ -115,6 +115,9 @@ for f in dev proc; do
 	ARGS="$ARGS -b /$f:/$f"
 done
 
+# Creating /dev/shm:
+ARGS="$ARGS -b $PREFIX/tmp:/dev/shm"
+
 # Set /home as current directory:
 ARGS="$ARGS --cwd=/home"
 
