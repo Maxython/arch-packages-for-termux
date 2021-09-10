@@ -1,4 +1,8 @@
 # arch-packages-for-termux
+
+![repo size](https://img.shields.io/github/repo-size/Maxython/arch-packages-for-termux)
+![tag](https://img.shields.io/github/v/tag/Maxython/arch-packages-for-termux)
+
 This is where the arch packages are configured to run the arch command on termux.  
 
 ## Compiling packages:
